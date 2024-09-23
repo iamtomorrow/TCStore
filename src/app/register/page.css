@@ -1,0 +1,82 @@
+
+.register-form--container {
+    width: 50%;
+    height: auto;
+    border-radius: 30px;
+    background-color: var(--surfaceColor)
+}
+
+.register-form-input--container {
+    width: 90%;
+    height: 50px;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-color: rgba(256, 256, 256, 0.3);
+    border: 1px solid rgba(256, 256, 256, 0.3);
+    padding-left: 20px;
+}
+
+.register-form-checkbox-input--container {
+    cursor: pointer;
+    height: 50px;
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.register-form-checkbox-input {
+    width: 40p;
+    height: 40px;
+    margin-right: 10px;
+    background-color: var(--surfaceColor);
+}
+
+.register-form-checkbox-input-p {
+    color: var(--textColorOnSurface);
+}
+
+.register-form-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--textColorOnSurface);
+    width: 100%;
+    height: 100%;
+}
+
+.register-form-file-input--container {
+    width: 90%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    color: var(--textColorOnSurface);
+}
+.register-form-file-input {
+    margin-left: 6px;
+}
+
+.register-button {
+    width: 90%;
+    height: 60px;
+    border-radius: 20px;
+    transition: all .25s ease;
+    background-color: var(--surfaceColorSecondary)
+}
+
+.register-button:hover {
+    opacity: .8;
+    transition: all .25s ease;
+}
+
+
+@media screen and (max-width: 800px) {
+    .register-form--container {
+        width: 80%;
+    }
+}

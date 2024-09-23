@@ -1,0 +1,33 @@
+
+.header--container {
+    width: 100%;
+    height: auto;
+    background-color: var(--surfaceColor);
+}
+
+.header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-button {
+    width: 54px;
+    height: 54px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .25s ease;
+}
+
+.header-button:hover {
+    opacity: .8;
+    transition: all .25s ease;
+}
+
+.header-icon {
+    size: 90px;
+    color: var(--iconColorOnSurface);
+}

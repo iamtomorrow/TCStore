@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+:root {
+  --backgroundColor: #F3F3F3;
+  --surfaceColor: #000000;
+  --textColorOnBackground: #000000;
+  --textColorOnSurface: #ffffff;
+  --iconColorOnBackground: #000000;
+  --iconColorOnSurface: #ffffff;
+
+  --backgroundColorSecondary: #000000;
+  --surfaceColorSecondary: #ffffff;
+  --textColorOnBackgroundSecondary: #000000;
+  --textColorOnSurfaceSecondary: #D9D9D9;
+  --iconColorOnBackgroundSecondary: #000000;
+  --iconColorOnSurfaceSecondary: #D9D9D9;
+}
+
+@font-face {
+  font-family: 'champions-bold';
+  src: url('./fonts/Champions-Bold.ttf');
+}
+
+* {
+  font-family: 'champions-bold';
+  scrollbar-width: 0;
+  scrollbar-color: none;
+}
+
+input {
+  background-color: none;
+}
+
+.page--container {
+  background-color: var(--backgroundColor);
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
