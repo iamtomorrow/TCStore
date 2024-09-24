@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { RouteContextProvider } from "@/contexts/RouteContext";
 
 /* const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,11 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${ChampionsBold.variable} ${ChampionsBold.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <RouteContextProvider>
+        <body
+          className={`${ChampionsBold.variable} ${ChampionsBold.variable} antialiased`}
+        >
+          {children}
+        </body>
+      </RouteContextProvider>
     </html>
   );
 }

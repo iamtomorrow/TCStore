@@ -62,14 +62,29 @@
 }
 
 .register-button {
-    width: 90%;
-    height: 60px;
+    width: 44%;
+    height: 50px;
     border-radius: 20px;
     transition: all .25s ease;
-    background-color: var(--surfaceColorSecondary)
+    background-color: var(--surfaceColorSecondary);
+    margin-left: 10px;
+}
+
+.cancel-button {
+    border: 1px solid var(--iconColorOnSurfaceSecondary);
+    width: 44%;
+    height: 50px;
+    border-radius: 20px;
+    transition: all .25s ease;
+    background-color: var(--surfaceColor);
+    margin-right: 10px;
 }
 
 .register-button:hover {
+    opacity: .8;
+    transition: all .25s ease;
+}
+.cancel-button:hover {
     opacity: .8;
     transition: all .25s ease;
 }

@@ -1,3 +1,4 @@
+"use client";
 
 import Image from "next/image";
 import "./Header.css";
@@ -7,6 +8,7 @@ import { Theme } from "@/theme/theme";
 import { TiUserOutline } from "react-icons/ti";
 import { CategoryItem } from "../CategoryItem/CategoryItem";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { useRouteContext } from "@/contexts/RouteContext";
 
 interface Props {
     restricted: boolean
@@ -51,6 +53,8 @@ const categories = [
 ]
 
 export const Header = ({ restricted }: Props) => {
+    const { updateRoute } = useRouteContext( );
+
     return (
         <div
         className="header--container">
@@ -100,12 +104,14 @@ export const Header = ({ restricted }: Props) => {
                             justifyContent: "center"
                         }}>
                             <Image 
+                                onClick={ ( ) => updateRoute("") }
                                 src={ Logo }
                                 alt="Logo"
                                 width={1000}
                                 height={1000}
                                 style={{
-                                    width: 140
+                                    width: 140,
+                                    cursor: "pointer",
                                 }}
                             />
                         </div>

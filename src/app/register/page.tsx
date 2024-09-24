@@ -313,8 +313,18 @@ const Register = ( ) => {
                                 height: 120,
                                 display: "flex",
                                 alignItems: "center",
-                                justifyContent: "center",
+                                justifyContent: "space-around",
+                                paddingLeft: 16,
+                                paddingRight: 16,
                             }}>
+                               <button
+                                className="cancel-button">
+                                    <p
+                                    style={{
+                                        color: Theme.primary.textColorOnSurface,
+                                        fontSize: 20,
+                                    }}>Cancelar</p>
+                                </button>
                                 <button
                                 className="register-button">
                                     <p
