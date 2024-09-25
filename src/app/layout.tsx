@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { RouteContextProvider } from "@/contexts/RouteContext";
+import { CheckoutContextProvider } from "@/contexts/CheckoutContext";
 
 /* const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <CheckoutContextProvider>
       <RouteContextProvider>
         <body
           className={`${ChampionsBold.variable} ${ChampionsBold.variable} antialiased`}
@@ -40,6 +42,7 @@ export default function RootLayout({
           {children}
         </body>
       </RouteContextProvider>
+      </CheckoutContextProvider>
     </html>
   );
 }

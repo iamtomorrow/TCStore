@@ -20,6 +20,38 @@
     transition: all .25s ease;
 }
 
+.checkout-price-info--container {
+    width: 100%;
+    height: auto;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-return-button {
+    border: 1px solid rgba(256, 256, 256, 0.4);
+    width: 46%;
+    height: 50px;
+    border-radius: 20px;
+    transition: all .25s ease;
+    background-color: var(--surfaceColor);
+}
+
+.checkout-next-button {
+    width: 46%;
+    height: 50px;
+    border-radius: 20px;
+    transition: all .25s ease;
+    background-color: var(--surfaceColorSecondary);
+}
+.checkout-next-button:hover {
+    opacity: .8;
+    transition: all .25s ease;
+}
+
 @media screen and (max-width: 800px) {
     .checkout-form--container {
         width: 80%;

@@ -15,12 +15,15 @@ export const ProductCard = ({
             width: 240,
             height: 460,
             borderRadius: 20,
+            marginLeft: 10,
+            marginRight: 10,
+            padding: 4,
             // backgroundColor: "red",
         }}>
             <div
             style={{
                 width: "100%",
-                height: "60%",
+                height: 240,
                 borderRadius: 20,
                 padding: 30,
                 backgroundColor: Theme.secondary.surfaceColor,
@@ -42,12 +45,14 @@ export const ProductCard = ({
             <div
             style={{
                 width: "100%",
-                height: "auto",
+                height: 46,
+                paddingTop: 6,
                 // backgroundColor: "green",
             }}>
                 <h2
                 style={{
                     fontSize: 20,
+                    lineHeight: 1,
                 }}>{ name }</h2>
             </div>
 

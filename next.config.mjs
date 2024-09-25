@@ -2,7 +2,12 @@
 
 const nextConfig = {
     images: {
-        domains: ["lh3.google.com", "down-br.img.susercontent.com"]
+        domains: [
+            "lh3.google.com", 
+            "down-br.img.susercontent.com",
+            "static.netshoes.com.br",
+            "img.freepik.com"
+        ]
     }
 };
 

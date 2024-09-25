@@ -44,7 +44,7 @@ export const CheckoutProductCard = ({
                             width: "auto",
                             height: "100%"
                         }}
-                    />
+                    /> 
                 </div>
 
                 <div

@@ -1,18 +1,21 @@
 "use client";
 
-import "./page.css";
+import { paymentMethods } from "@/app/data/paymentMethods";
+import { PaymentMethodProps } from "@/types/Payment";
 import { ProductProps } from "@/types/Products";
 import { ChildrenProps } from "@/types/Props";
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface CheckoutContextProps {
     products: ProductProps[]
     subtotal: number 
     discounts: number
     total: number 
+    paymentMethod: PaymentMethodProps | null
 
     addToCheckout: ( product: ProductProps ) => void
     removeFromCheckout: ( id: string ) => void
+    updatePaymentMethod: ( id: string ) => void
 }
 
 const CheckoutContextInitialState: CheckoutContextProps = {
@@ -20,9 +23,11 @@ const CheckoutContextInitialState: CheckoutContextProps = {
     subtotal: 0,
     discounts: 0,
     total: 0,
+    paymentMethod: null,
 
     addToCheckout: ( ) => { },
-    removeFromCheckout: ( ) => { }
+    removeFromCheckout: ( ) => { },
+    updatePaymentMethod: ( ) => { },
 }
 
 export const CheckoutContext = createContext<CheckoutContextProps>( CheckoutContextInitialState);
@@ -32,13 +37,40 @@ export const CheckoutContextProvider = ({ children }: ChildrenProps ) => {
     const [ subtotal, setSubtotal ] = useState<number>(0);
     const [ discounts, setDiscounts ] = useState<number>(0);
     const [ total, setTotal ] = useState<number>(0);
+    const [ paymentMethod, setPaymentMethod ] = useState<PaymentMethodProps | null>(null);
+
+    useEffect(( ) => {
+        let fullAmount = 0;
+        products.map(( item ) => {
+            fullAmount += item.basePrice.amount;
+        });
+        setSubtotal( fullAmount );
+    }, [ products ]);
+
+    useEffect(( ) => {
+        let _total = 0;
+        products.map(( item ) => {
+            _total += item.pricesByPaymentMethod[0].priceDetails.totalPrice;
+        })
+        setTotal( _total );
+    }, [ products ])
 
     const addToCheckout = ( product: ProductProps ) => {
-
+        setProducts( prev => [product, ...prev] );
     }
 
-    const removeFromCheckout = ( id: string ) => {
+    const removeFromCheckout = ( code: string ) => {
+        let updatedProducts = products.filter(( item ) => {
+            return item.productBarcode !== code;
+        })
+        setProducts( prev => updatedProducts );
+    }
 
+    const updatePaymentMethod = ( id: string ) => {
+        let selectedPaymentMethod = paymentMethods.filter((item) => {
+            return item.id === id;
+        })
+        setPaymentMethod( selectedPaymentMethod[0] );
     }
 
     return (
@@ -47,11 +79,17 @@ export const CheckoutContextProvider = ({ children }: ChildrenProps ) => {
             subtotal,
             discounts,
             total,
+            paymentMethod,
 
             addToCheckout,
-            removeFromCheckout
+            removeFromCheckout,
+            updatePaymentMethod
         }}>
             { children }
         </CheckoutContext.Provider>
     )
+}
+
+export const useCheckoutContext = ( ) => {
+    return useContext( CheckoutContext );
 }

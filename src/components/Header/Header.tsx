@@ -3,12 +3,14 @@
 import Image from "next/image";
 import "./Header.css";
 import Logo from "@/assets/images/logo.jpg";
-import { BiMenu, BiSearch, BiShoppingBag } from "react-icons/bi";
+import { BiCamera, BiMenu, BiSearch, BiShoppingBag } from "react-icons/bi";
 import { Theme } from "@/theme/theme";
 import { TiUserOutline } from "react-icons/ti";
 import { CategoryItem } from "../CategoryItem/CategoryItem";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 import { useRouteContext } from "@/contexts/RouteContext";
+import { CgClose } from "react-icons/cg";
+import { useState } from "react";
 
 interface Props {
     restricted: boolean
@@ -53,6 +55,8 @@ const categories = [
 ]
 
 export const Header = ({ restricted }: Props) => {
+    const [ searchQuery, setSearchQuery ] = useState<string>("");
+
     const { updateRoute } = useRouteContext( );
 
     return (
@@ -172,6 +176,8 @@ export const Header = ({ restricted }: Props) => {
                         }}>
                             <input 
                                 placeholder="O que você busca?"
+                                value={ searchQuery }
+                                onChange={ (e) => setSearchQuery( e.target.value ) }
                                 style={{
                                     flex: 1,
                                     maxWidth: "auto",
@@ -184,6 +190,40 @@ export const Header = ({ restricted }: Props) => {
                                     color: Theme.primary.textColorOnSurface
                                 }}
                             />
+                            {
+                                searchQuery &&
+                                <button
+                                onClick={ ( ) => setSearchQuery("") }
+                                style={{
+                                    minWidth: 60,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    padding: 12,
+                                    // backgroundColor: "red"
+                                }}>
+                                    <CgClose 
+                                        size={26}
+                                        color={ Theme.primary.iconColorOnSurface }
+                                        className="header-icon"
+                                    />
+                                </button>
+                            }
+                            <button
+                            style={{
+                                minWidth: 60,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                padding: 12,
+                                // backgroundColor: "red"
+                            }}>
+                                <BiCamera 
+                                    size={26}
+                                    color={ Theme.primary.iconColorOnSurface }
+                                    className="header-icon"
+                                />
+                            </button>
                             <button
                             style={{
                                 minWidth: 60,
@@ -194,7 +234,7 @@ export const Header = ({ restricted }: Props) => {
                                 // backgroundColor: "red"
                             }}>
                                 <BiSearch 
-                                    size={30}
+                                    size={26}
                                     color={ Theme.primary.iconColorOnSurface }
                                     className="header-icon"
                                 />
