@@ -10,9 +10,7 @@ import { useCheckoutContext } from "@/contexts/CheckoutContext";
 import { Utils } from "@/utils/utils";
 import { CheckoutStep } from "@/components/CheckoutStep/CheckoutStep";
 import { ShippingCard } from "@/components/ShippingCard/ShippingCard";
-import { ShippingProps } from "@/types/Shipping";
 import { ShippingMethods } from "../data/shippingMethods";
-import { PaymentCard } from "@/components/PaymentCard/PaymentCard";
 import { PaymentMethodCard } from "@/components/PaymentMethodCard/PaymentMethodCard";
 import { paymentMethods } from "../data/paymentMethods";
 
@@ -23,13 +21,20 @@ const Checkout = ( ) => {
     const [ loading, setLoading ] = useState<boolean>(false);
     const [ addEnable, setAddEnable ] = useState<boolean>(false);
     const [ shippingMethod, setShippingMethod ] = useState<string | null>(null);
+    const [ _paymentMethod, setPaymentMethod ] = useState<string | null>(null);
 
     const { 
         products, 
         addToCheckout, 
         subtotal,
         discounts,
-        total } = useCheckoutContext( );
+        total,
+        paymentMethod,
+        updatePaymentMethod } = useCheckoutContext( );
+
+    useEffect(( ) => {
+        updatePaymentMethod( _paymentMethod as string );
+    }, [ _paymentMethod ]);
 
     useEffect(( ) => {
         if ( code.length >= 11 ) {
@@ -49,8 +54,6 @@ const Checkout = ( ) => {
             setProducts( prev => [product[0], ...prev]);
             addToCheckout( product[0] );
         }
-
-        // console.log( _products );
     }
 
     return (
@@ -258,10 +261,10 @@ const Checkout = ( ) => {
                                         {
                                             paymentMethods.map((item) => (
                                                 <PaymentMethodCard 
-                                                    iconUrl={ "" }
+                                                    iconUrl={ item.iconUrl }
                                                     title={ item.name }
-                                                    active={ shippingMethod === item.id ? true : false }
-                                                    onClick={ ( ) => setShippingMethod( item.id )}
+                                                    active={ _paymentMethod === item.id ? true : false }
+                                                    onClick={ ( ) => setPaymentMethod( item.id )}
                                                 />
                                             ))
                                         }
@@ -346,7 +349,7 @@ const Checkout = ( ) => {
                                         fontSize: 30,
                                         fontWeight: "700",
                                         color: Theme.primary.textColorOnSurface
-                                    }}>{ total }</h3>
+                                    }}>R$ { total }</h3>
                                 </div>
                             </div>
                         </div>
@@ -383,6 +386,12 @@ const Checkout = ( ) => {
                                     className="checkout-next-button">
                                         <p>Continuar</p>
                                 </button>
+
+                                {/* <p
+                                style={{
+                                    color: "red",
+                                    fontSize: 20,
+                                }}>Payment: { paymentMethod !== null ? paymentMethod?.name : "No payment selected" }</p> */}
                             </div>
                         }
                     </div>

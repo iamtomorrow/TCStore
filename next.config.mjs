@@ -6,7 +6,8 @@ const nextConfig = {
             "lh3.google.com", 
             "down-br.img.susercontent.com",
             "static.netshoes.com.br",
-            "img.freepik.com"
+            "img.freepik.com",
+            "github.com",
         ]
     }
 };

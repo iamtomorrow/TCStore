@@ -4,6 +4,7 @@ export interface PaymentMethodProps {
     key: string
     name: string
     includeTax: boolean
+    iconUrl: string
 }
 
 export interface PriceByPaymentMethodProps {

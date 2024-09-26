@@ -35,19 +35,22 @@ export const products: ProductProps[] = [
                 id: "1",
                 includeTax: false,
                 key: "kdfvvsv",
-                name: "Dinheiro"
+                name: "Dinheiro",
+                iconUrl: "@/assets/images/icons/dinheiro.jpg",
             },
             {
                 id: "2",
                 includeTax: false,
                 key: "kdfcasssv",
-                name: "PIX"
+                name: "PIX",
+                iconUrl: "@/assets/images/icons/pix.jpg",
             },
             {
                 id: "3",
                 includeTax: true,
                 key: "kscascsssv",
-                name: "Cartão de Crédito"
+                name: "Cartão de Crédito",
+                iconUrl: "@/assets/images/icons/credito.jpg",
             },
         ],
         pricesByPaymentMethod: [
@@ -57,6 +60,7 @@ export const products: ProductProps[] = [
                     key: "kdfvvsv",
                     name: "Dinheiro",
                     includeTax: false,
+                    iconUrl: "@/assets/images/icons/dinheiro.jpg",
                 },
                 priceDetails: {
                     amount: 31.00,
@@ -73,6 +77,7 @@ export const products: ProductProps[] = [
                     key: "kscascsssv",
                     name: "Cartão de Crédito",
                     includeTax: true,
+                    iconUrl: "@/assets/images/icons/credito.jpg",
                 },
                 priceDetails: {
                     amount: 31.00,
@@ -133,19 +138,22 @@ export const products: ProductProps[] = [
                 id: "1",
                 includeTax: false,
                 key: "kdfvvsv",
-                name: "Dinheiro"
+                name: "Dinheiro",
+                iconUrl: "@/assets/images/icons/dinheiro.jpg",
             },
             {
                 id: "2",
                 includeTax: false,
                 key: "kdfcasssv",
-                name: "PIX"
+                name: "PIX",
+                iconUrl: "@/assets/images/icons/pix.jpg",
             },
             {
                 id: "3",
                 includeTax: true,
                 key: "kscascsssv",
-                name: "Cartão de Crédito"
+                name: "Cartão de Crédito",
+                iconUrl: "@/assets/images/icons/credito.jpg",
             },
         ],
         pricesByPaymentMethod: [
@@ -155,6 +163,7 @@ export const products: ProductProps[] = [
                     key: "kdfvvsv",
                     name: "Dinheiro",
                     includeTax: false,
+                    iconUrl: "@/assets/images/icons/dinheiro.jpg",
                 },
                 priceDetails: {
                     amount: 149.49,

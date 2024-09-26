@@ -40,20 +40,33 @@ export const CheckoutContextProvider = ({ children }: ChildrenProps ) => {
     const [ paymentMethod, setPaymentMethod ] = useState<PaymentMethodProps | null>(null);
 
     useEffect(( ) => {
-        let fullAmount = 0;
-        products.map(( item ) => {
-            fullAmount += item.basePrice.amount;
-        });
-        setSubtotal( fullAmount );
+        updateTotal( );
+        updateSubtotal( );
+    }, [ paymentMethod ]);
+
+    useEffect(( ) => {
+        updateSubtotal( );
     }, [ products ]);
 
     useEffect(( ) => {
+        updateTotal( );
+    }, [ products ])
+
+    const updateSubtotal = ( ) => {
+        let subtotal = 0;
+        products.map(( item ) => {
+            subtotal += item.basePrice.amount;
+        });
+        setSubtotal( subtotal );
+    }
+
+    const updateTotal = ( ) => {
         let _total = 0;
         products.map(( item ) => {
             _total += item.pricesByPaymentMethod[0].priceDetails.totalPrice;
         })
         setTotal( _total );
-    }, [ products ])
+    }
 
     const addToCheckout = ( product: ProductProps ) => {
         setProducts( prev => [product, ...prev] );

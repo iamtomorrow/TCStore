@@ -19,7 +19,7 @@ export const PaymentMethodCard = ({ title, iconUrl, active, onClick }: Props ) =
             opacity: active ? 1 : 0.4,
         }}>
             <Image 
-                src={ iconUrl }
+                src={ "" }
                 alt="Payment Method Icon Image"
                 width={1000}
                 height={1000}
