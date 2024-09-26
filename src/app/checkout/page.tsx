@@ -12,6 +12,9 @@ import { CheckoutStep } from "@/components/CheckoutStep/CheckoutStep";
 import { ShippingCard } from "@/components/ShippingCard/ShippingCard";
 import { ShippingProps } from "@/types/Shipping";
 import { ShippingMethods } from "../data/shippingMethods";
+import { PaymentCard } from "@/components/PaymentCard/PaymentCard";
+import { PaymentMethodCard } from "@/components/PaymentMethodCard/PaymentMethodCard";
+import { paymentMethods } from "../data/paymentMethods";
 
 const Checkout = ( ) => {
     const [ steps, setSteps ] = useState<number>(0);
@@ -122,7 +125,7 @@ const Checkout = ( ) => {
                                 />
 
                                 <CheckoutStep 
-                                    checked={ shippingMethod !== null ? true : false }
+                                    checked={ steps >= 2 ? true : false }
                                     step={ 2 }
                                     title="Entrega"
                                 />
@@ -172,7 +175,7 @@ const Checkout = ( ) => {
                             <div
                             style={{
                                 width: "100%",
-                                height: 180,
+                                height: 260,
                                 paddingLeft: 30,
                                 paddingRight: 30,
                                 // backgroundColor: "orange"
@@ -188,13 +191,14 @@ const Checkout = ( ) => {
                                 }}>
                                     <h2
                                     style={{
-                                        color: Theme.primary.textColorOnSurface
+                                        color: Theme.primary.textColorOnSurface,
+                                        fontSize: 22,
                                     }}>Qual a forma de entrega?</h2>
     
                                     <div
                                     style={{
                                         width: "100%",
-                                        height: "100%",
+                                        height: "70%",
                                         display: "flex",
                                         flexDirection: "row",
                                         justifyContent: "center",
@@ -221,7 +225,7 @@ const Checkout = ( ) => {
                             <div
                             style={{
                                 width: "100%",
-                                height: 200,
+                                height: 260,
                                 paddingLeft: 30,
                                 paddingRight: 30,
                             }}>
@@ -229,12 +233,39 @@ const Checkout = ( ) => {
                                 style={{
                                     width: "100%",
                                     height: "100%",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    // backgroundColor: "red"
                                 }}>
                                     <h1
                                     style={{
                                         color: Theme.primary.textColorOnSurface,
-                                        fontSize: 26,
-                                    }}>Vamos pagar bebê?</h1>
+                                        fontSize: 22,
+                                    }}>Método de Pagamento</h1>
+
+                                    <div
+                                    style={{
+                                        width: "100%",
+                                        height: "70%",
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        // backgroundColor: "red"
+                                    }}>
+                                        {
+                                            paymentMethods.map((item) => (
+                                                <PaymentMethodCard 
+                                                    iconUrl={ "" }
+                                                    title={ item.name }
+                                                    active={ shippingMethod === item.id ? true : false }
+                                                    onClick={ ( ) => setShippingMethod( item.id )}
+                                                />
+                                            ))
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         }

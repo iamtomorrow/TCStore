@@ -5,7 +5,8 @@ export const paymentMethods: PaymentMethodProps[] = [
         id: "1",
         includeTax: false,
         key: "kdfvvsv",
-        name: "Dinheiro"
+        name: "Dinheiro",
+
     },
     {
         id: "2",
@@ -16,7 +17,7 @@ export const paymentMethods: PaymentMethodProps[] = [
     {
         id: "3",
         includeTax: true,
-        key: "kscascsssv",
+        key: "kscascsss",
         name: "Cartão de Crédito"
     }
 ]
