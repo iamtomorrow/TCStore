@@ -3,6 +3,7 @@
 import "./page.css";
 
 import { Header } from "@/components/Header/Header";
+import { Barcode } from "@/layouts/Barcode/Barcode";
 import { Theme } from "@/theme/theme";
 import { useState } from "react";
 
@@ -13,6 +14,11 @@ const Register = ( ) => {
     const [ isPIXValid, setIsPIXValid ] = useState<boolean>(false);
     const [ isCredtiCardValid, setIsCreditCardValid ] = useState<boolean>(false);
     const [ isDebitCardValid, setIsDebitCardValid ] = useState<boolean>(false);
+    const [ generate, setGenerate ] = useState<boolean>(false);
+
+    const generateBarcodes = ( ) => {
+        
+    }
 
     return (
         <div 
